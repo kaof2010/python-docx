@@ -76,3 +76,10 @@ class CT_P(BaseOxmlElement):
     def style(self, style):
         pPr = self.get_or_add_pPr()
         pPr.style = style
+
+    @property
+    def numbering(self):
+        pPr = self.pPr
+        if pPr is None:
+            return None
+        return pPr.numPr

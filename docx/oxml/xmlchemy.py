@@ -16,7 +16,7 @@ from docx.oxml import OxmlElement
 from docx.oxml.exceptions import InvalidXmlError
 from docx.oxml.ns import NamespacePrefixedTag, nsmap, qn
 from docx.shared import lazyproperty
-
+from docx.oxml import parse_xml
 
 def serialize_for_reading(element):
     """
@@ -753,7 +753,9 @@ class _OxmlElementBase(etree.ElementBase):
     def _nsptag(self):
         return NamespacePrefixedTag.from_clark_name(self.tag)
 
-
+    def clone(self):
+        return parse_xml(self.xml)
+        
 BaseOxmlElement = MetaOxmlElement(
     'BaseOxmlElement', (etree.ElementBase,), dict(_OxmlElementBase.__dict__)
 )

@@ -76,6 +76,10 @@ class Paragraph(Parented):
             paragraph.style = style
         return paragraph
 
+    def clone_paragraph_before(self):
+        ele = self._p.clone()
+        self._p.addprevious(ele)
+
     @property
     def paragraph_format(self):
         """
@@ -112,6 +116,12 @@ class Paragraph(Parented):
         )
         self._p.style = style_id
 
+    @property
+    def numbering(self):
+        """
+        """
+        return self._p.numbering
+        
     @property
     def text(self):
         """

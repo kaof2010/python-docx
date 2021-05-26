@@ -298,6 +298,12 @@ class CT_PPr(BaseOxmlElement):
             return None
         return widowControl.val
 
+    @property
+    def numbering(self):
+        """
+        """
+        return self.get_or_add_numPr()
+        
     @widowControl_val.setter
     def widowControl_val(self, value):
         if value is None:
